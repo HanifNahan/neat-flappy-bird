@@ -22,7 +22,7 @@ def draw_window(win, bird, pipes, ground, score):
     for pipe in pipes:
         pipe.draw(win)
     ground.draw(win)
-    text = font.render("Score:" + str(score), 1, (255,255,255))
+    text = font.render("Score:" + str(score), 1, (255, 255, 255))
     win.blit(text, (window_width - 10 - text.get_width(), 10))
     pygame.display.update()
 
@@ -40,7 +40,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        # bird.move()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    bird.jump()
+        bird.move()
         add_pipe = False
         remove = []
         for pipe in pipes:
@@ -65,4 +68,5 @@ def main():
     quit()
 
 
-main()
+if __name__ == "__main__":
+    main()

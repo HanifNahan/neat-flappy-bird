@@ -31,18 +31,19 @@ class Bird:
     gravity = 0.5
     initial_speed = -10.5
     angle = self.tilt * math.pi / 180
-    d = (gravity * time ** 2) + (initial_speed * time * math.sin(angle))
+    d = self.velocity*(self.tick_count) + 0.5*(3)*(self.tick_count)**2
     if d >= 16:
       d = 16
     if d < 0:
       d -= 2
-    self.y = self.y - d
+    self.y = self.y + d
     if d < 0 or self.y < (self.height + 50) :
       if self.tilt < self.max_rotation:
         self.tilt = self.max_rotation
     else:
       if self.tilt > -90:
         self.tilt = self.rotation_velocity
+    print(self.velocity)
   
   def draw(self, win):
     self.image_count += 1
