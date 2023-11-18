@@ -27,10 +27,6 @@ class Bird:
 
   def move(self):
     self.tick_count += 1
-    time = self.tick_count / 10
-    gravity = 0.5
-    initial_speed = -10.5
-    angle = self.tilt * math.pi / 180
     d = self.velocity*(self.tick_count) + 0.5*(3)*(self.tick_count)**2
     if d >= 16:
       d = 16
@@ -43,7 +39,6 @@ class Bird:
     else:
       if self.tilt > -90:
         self.tilt = self.rotation_velocity
-    print(self.velocity)
   
   def draw(self, win):
     self.image_count += 1
